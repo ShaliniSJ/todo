@@ -1,0 +1,23 @@
+# Rust build directory
+/target/
+
+# Executables and binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE/editor stuff
+**/*.rs.bk
+.idea/
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Cargo specific
+Cargo.lock # Optional: keep this if you're building a binary tool; remove only if you're making a library
+
+# Task file (optional - if you don’t want to commit your tasks.json)
+tasks.json
