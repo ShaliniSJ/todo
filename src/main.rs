@@ -40,12 +40,12 @@ fn list_tasks(tasks: &[task::Task]) {
 const DEFAULT_PATH: &str = "{{give yours}}";
 
 fn main() {
-    println!();
     let cli = Cli::parse();
 
     // Use provided path or fallback to default path
     let task_path: PathBuf = cli.path.unwrap_or_else(|| PathBuf::from(DEFAULT_PATH));
     println!("📁 Using task file at: {}", task_path.display());
+    println!();
     let mut tasks = storage::load_tasks(&task_path);
 
     match cli.command {
@@ -81,4 +81,6 @@ fn main() {
     }
     println!();
     list_tasks(&tasks);
+    println!();
+    println!();
 }

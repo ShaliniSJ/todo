@@ -64,11 +64,7 @@ todo done <task_id>
 
 -   Use a custom path
 
-    -   By default, tasks are saved to:
-
-    ```
-    D:/academics/New_folder/projects/todo/tasks.json
-    ```
+    -   By default, tasks are saved to the path which the main.rs has
 
     -   You can override it like this:
 
@@ -109,8 +105,6 @@ Install them using Cargo.toml.
 ✨ Credits
 
 Built with 💙 by [Shalini] using Rust 🦀
-
-
 
 Happy shipping, CLI wizard 🪄🚀
 
