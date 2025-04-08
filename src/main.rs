@@ -29,7 +29,10 @@ fn list_tasks(tasks: &[task::Task]) {
         if !task.is_done {
             println!("{}", format!("{} [{}] {}", task.id, status, task.title));
         } else {
-            println!("{}", format!("{} [{}] {}", task.id, status, task.title).dimmed());
+            println!(
+                "{}",
+                format!("{} [{}] {}", task.id, status, task.title).dimmed()
+            );
         }
     }
 }
@@ -37,6 +40,7 @@ fn list_tasks(tasks: &[task::Task]) {
 const DEFAULT_PATH: &str = "{{give yours}}";
 
 fn main() {
+    println!();
     let cli = Cli::parse();
 
     // Use provided path or fallback to default path
@@ -62,7 +66,6 @@ fn main() {
                 println!("{}", "No tasks found.".dimmed());
             } else {
                 println!("{}", "Tasks:".bold());
-                list_tasks(&tasks);
             }
         }
 
@@ -76,4 +79,6 @@ fn main() {
             }
         }
     }
+    println!();
+    list_tasks(&tasks);
 }
