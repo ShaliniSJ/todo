@@ -21,6 +21,7 @@ enum Commands {
     Add { task: String },
     List,
     Done { id: u32 },
+    Delete { id: u32 },
 }
 
 fn list_tasks(tasks: &[task::Task]) {
@@ -37,7 +38,7 @@ fn list_tasks(tasks: &[task::Task]) {
     }
 }
 
-const DEFAULT_PATH: &str = "{{give yours}}";
+const DEFAULT_PATH: &str = "{{give a default path}}";
 
 fn main() {
     let cli = Cli::parse();
@@ -74,6 +75,16 @@ fn main() {
                 task.is_done = true;
                 storage::save_tasks(&tasks, &task_path);
                 println!("{}", "✔️ Task marked as done!".green());
+            } else {
+                println!("{}", format!("❌ Task with ID {} not found.", id).red());
+            }
+        }
+
+        Commands::Delete { id } => {
+            if let Some(pos) = tasks.iter().position(|t| t.id == id) {
+                tasks.remove(pos);
+                storage::save_tasks(&tasks, &task_path);
+                println!("{}", "✔️ Task deleted!".green());
             } else {
                 println!("{}", format!("❌ Task with ID {} not found.", id).red());
             }
